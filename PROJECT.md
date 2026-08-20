@@ -1,7 +1,11 @@
-# Project: Empires Jewelry Mobile-First Web Application (Cloudflare & CMS Evolution)
+# Project: WhatsApp Sales Kit & Empires E-Commerce (Open Source & Solidarity Edition)
+
+## Overview & Humanitarian Mission
+This project is an Open Source (MIT) mobile-first luxury e-commerce application and WhatsApp direct-sales toolkit, created to support Colombian and Latin American micro-entrepreneurs, jewelers, and artisans affected by seismic disasters with a 100% free, zero-SaaS-cost digital catalog.
 
 ## Architecture
 - **Tech Stack**: React 18/19, TypeScript, Vite, Tailwind CSS, Lucide React (zero emojis), Vitest, Cloudflare Pages & Cloudflare Workers (Functions / REST API).
+- **AI Agentic Development**: Google Antigravity (AGY) native workflow, prompts, and MCP server integrations (`GUIA_ANTIGRAVITY.md`).
 - **Backend & Storage**: Cloudflare Pages Functions (`functions/api/[[route]].ts` / `functions/api/products.ts`, `functions/api/auth.ts`) & Cloudflare Workers compatible architecture with `wrangler.toml`. Multi-tier storage layer: Cloudflare D1 SQL database + Cloudflare KV caching + Local persistent JSON fallback for robust dev and production resilience.
 - **Admin CMS**: Dedicated secure Admin Portal (`/admin` and in-app modal with PIN/password auth), complete product CRUD (add, edit, delete with confirmation), category & collection management, instant optimistic frontend update and asynchronous backend synchronization.
 - **Visual Design & Design System**: Strictly adhering to Empires Jewelry Design System:

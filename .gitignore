@@ -1,2 +1,10 @@
 /.agents
 /Empires Jewelry Design System.zip
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.env
+.env.local
+.DS_Store
+*.log

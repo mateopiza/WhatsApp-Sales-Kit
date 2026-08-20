@@ -1,6 +1,7 @@
 {
   "name": "empires-mcp-server",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "MCP Server for conversational deployment and management of Empires Jewelry stores",
   "type": "module",
   "main": "dist/index.js",
