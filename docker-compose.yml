@@ -1,0 +1,59 @@
+version: "3.9"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Empires Jewelry — Docker Compose para Dokploy & GitHub CI/CD
+#
+# Soporta:
+# 1. Despliegue automatizado en Dokploy (PaaS) conectado a repositorio de GitHub.
+# 2. Enrutamiento Traefik con certificados SSL/TLS automáticos (Let's Encrypt).
+# 3. Inyección en caliente de variables de entorno (window.__RUNTIME_CONFIG__).
+# 4. Verificación de salud (Healthcheck) y fallback de resiliencia local.
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  empires-jewelry-store:
+    build:
+      context: ./empires-jewelry-app
+      dockerfile: docker/Dockerfile
+    image: empires-jewelry-app:latest
+    container_name: ${COMPOSE_PROJECT_NAME:-empires}-store
+    restart: unless-stopped
+    ports:
+      # Puerto expuesto en VPS / Local (Dokploy enruta automáticamente vía Traefik)
+      - "${STORE_PORT:-3000}:80"
+    environment:
+      STORE_NAME: ${STORE_NAME:-Empires Jewelry}
+      STORE_CURRENCY: ${STORE_CURRENCY:-USD}
+      STORE_WHATSAPP_PHONE: ${STORE_WHATSAPP_PHONE:-573001234567}
+      STORE_PRIMARY_COLOR: ${STORE_PRIMARY_COLOR:-#D4B48C}
+      STORE_ACCENT_COLOR: ${STORE_ACCENT_COLOR:-#3A332D}
+      STORE_ADMIN_PIN: ${STORE_ADMIN_PIN:-1879}
+      STORE_LOGO_URL: ${STORE_LOGO_URL:-}
+      STORE_TAGLINE: ${STORE_TAGLINE:-Joyería de Alta Distinción}
+      NODE_ENV: production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      # Persistencia de catálogo offline / JSON / SQLite
+      - empires_store_data:/app/data
+    networks:
+      - empires-net
+    labels:
+      # ─── Dokploy & Traefik Reverse Proxy Configuration ───
+      - "traefik.enable=true"
+      - "traefik.http.routers.empires-store.rule=Host(`${DOMAIN:-empires.local}`)"
+      - "traefik.http.routers.empires-store.entrypoints=websecure"
+      - "traefik.http.routers.empires-store.tls.certresolver=letsencrypt"
+      - "traefik.http.services.empires-store.loadbalancer.server.port=80"
+
+networks:
+  empires-net:
+    driver: bridge
+
+volumes:
+  empires_store_data:
+    driver: local

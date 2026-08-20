@@ -1,0 +1,22 @@
+name = "empires-jewelry"
+compatibility_date = "2024-05-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+[vars]
+ADMIN_PIN = "empires2026"
+ADMIN_PASSWORD = "empires2026"
+AUTH_SECRET = "empires-secret-key-2026"
+ENVIRONMENT = "production"
+
+# Cloudflare D1 SQL Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "empires-jewelry-db"
+database_id = "local-d1-empires-db"
+
+# Cloudflare KV Distributed Cache Binding
+[[kv_namespaces]]
+binding = "CATALOG_KV"
+id = "local-kv-empires-catalog"
+preview_id = "local-kv-empires-catalog-preview"

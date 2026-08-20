@@ -1,0 +1,59 @@
+<!-- @dsCard group="Storefront" viewport="1280x760" name="Empires Storefront" subtitle="Interactive click-through: home, category, PDP, cart" -->
+<!DOCTYPE html><html><head><link rel="stylesheet" href="../../styles.css"><script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>window.__EJDS_NS__ = "EmpiresJewelryDesignSystem_5c52ea";</script>
+<style>*{box-sizing:border-box;margin:0}body{background:var(--bg-page);font-family:var(--font-body)}a{color:var(--color-taupe)}a:hover{color:var(--color-ink)}</style>
+</head><body>
+<div id="root"></div>
+<script type="text/babel" src="Header.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="CategoryScreen.jsx"></script>
+<script type="text/babel" src="ProductScreen.jsx"></script>
+<script type="text/babel" src="CartDrawer.jsx"></script>
+<script type="text/babel">
+const PRODUCTS = [
+  { id: 1, name: "Collar Aurora", price: "$420.000", priceNum: 420000, badge: "Nuevo", image: "../../assets/imagery/hero-necklace-rings.png" },
+  { id: 2, name: "Anillo Solstice", price: "$680.000", priceNum: 680000, image: "../../assets/imagery/hero-necklace-rings.png" },
+  { id: 3, name: "Anillo Dueto", price: "$540.000", priceNum: 540000, badge: "Edición limitada", image: "../../assets/imagery/hero-necklace-rings.png" },
+  { id: 4, name: "Collar Lumière", price: "$390.000", priceNum: 390000, image: "../../assets/imagery/hero-necklace-rings.png" },
+];
+function App(){
+  const [view, setView] = React.useState("Home");
+  const [product, setProduct] = React.useState(null);
+  const [cartOpen, setCartOpen] = React.useState(false);
+  const [cart, setCart] = React.useState([]);
+
+  const addToCart = (p, qty = 1) => {
+    setCart((prev) => {
+      const existing = prev.find((i) => i.id === p.id);
+      if (existing) return prev.map((i) => (i.id === p.id ? { ...i, qty: i.qty + qty } : i));
+      return [...prev, { ...p, qty }];
+    });
+    setCartOpen(true);
+  };
+  const updateQty = (id, qty) => setCart((prev) => prev.map((i) => (i.id === id ? { ...i, qty } : i)));
+  const cartCount = cart.reduce((s, i) => s + i.qty, 0);
+
+  const nav = (target) => {
+    if (target === "Home") { setView("Home"); return; }
+    setView("Category");
+  };
+  const selectProduct = (p) => { setProduct(p); setView("Product"); };
+
+  return (
+    <React.Fragment>
+      <Header onNav={nav} cartCount={cartCount} onCartClick={() => setCartOpen(true)} />
+      {view === "Home" && <HomeScreen products={PRODUCTS} onSelectProduct={selectProduct} onAddToCart={addToCart} />}
+      {view === "Category" && <CategoryScreen products={PRODUCTS} onSelectProduct={selectProduct} onAddToCart={addToCart} />}
+      {view === "Product" && product && <ProductScreen product={product} onAddToCart={addToCart} />}
+      <Footer />
+      <CartDrawer open={cartOpen} items={cart} onClose={() => setCartOpen(false)} onQtyChange={updateQty} onCheckout={() => alert("Pedido confirmado (demo)")} />
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body></html>

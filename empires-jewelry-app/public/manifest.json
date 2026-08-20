@@ -1,0 +1,59 @@
+{
+  "name": "Empires Jewelry — Alta Joyería & Lookbook Editorial",
+  "short_name": "Empires Jewelry",
+  "description": "Catálogo editorial interactivo y revista digital de alta joyería con navegación gestual, favoritos y consulta personalizada vía WhatsApp.",
+  "start_url": "/",
+  "id": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#F5EDE6",
+  "background_color": "#F5EDE6",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "categories": ["lifestyle", "shopping", "luxury"],
+  "icons": [
+    {
+      "src": "/assets/logos/mark-only-taupe.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logos/mark-only-taupe.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logos/mark-only-taupe.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Colecciones",
+      "short_name": "Colecciones",
+      "description": "Explorar colecciones de alta joyería",
+      "url": "/#colecciones",
+      "icons": [{ "src": "/assets/logos/mark-only-taupe.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Buscar Piezas",
+      "short_name": "Buscar",
+      "description": "Búsqueda instantánea con filtros",
+      "url": "/#buscar",
+      "icons": [{ "src": "/assets/logos/mark-only-taupe.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Piezas Guardadas",
+      "short_name": "Favoritos",
+      "description": "Ver lista de piezas favoritas",
+      "url": "/#favoritos",
+      "icons": [{ "src": "/assets/logos/mark-only-taupe.png", "sizes": "96x96" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

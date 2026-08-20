@@ -1,0 +1,29 @@
+@font-face{font-family:"Cinzel";font-style:normal;font-display:swap;font-weight:400;src:url(https://cdn.jsdelivr.net/fontsource/fonts/cinzel@5.3.0/latin-400-normal.woff2) format('woff2');}
+@font-face{font-family:"Cinzel";font-style:normal;font-display:swap;font-weight:500;src:url(https://cdn.jsdelivr.net/fontsource/fonts/cinzel@5.3.0/latin-500-normal.woff2) format('woff2');}
+@font-face{font-family:"Cinzel";font-style:normal;font-display:swap;font-weight:600;src:url(https://cdn.jsdelivr.net/fontsource/fonts/cinzel@5.3.0/latin-600-normal.woff2) format('woff2');}
+@font-face{font-family:"Montserrat";font-style:normal;font-display:swap;font-weight:200;src:url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat@5.3.0/latin-200-normal.woff2) format('woff2');}
+@font-face{font-family:"Montserrat";font-style:normal;font-display:swap;font-weight:300;src:url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat@5.3.0/latin-300-normal.woff2) format('woff2');}
+@font-face{font-family:"Montserrat";font-style:normal;font-display:swap;font-weight:400;src:url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat@5.3.0/latin-400-normal.woff2) format('woff2');}
+@font-face{font-family:"Montserrat";font-style:normal;font-display:swap;font-weight:500;src:url(https://cdn.jsdelivr.net/fontsource/fonts/montserrat@5.3.0/latin-500-normal.woff2) format('woff2');}
+:root{
+--font-display:"Cinzel",serif;
+--font-body:"Montserrat",sans-serif;
+--tracking-wide:0.14em;
+--tracking-wider:0.22em;
+--text-display-xl:clamp(2.75rem,4vw,4.5rem);
+--text-display-lg:2.5rem;
+--text-display-md:1.75rem;
+--text-display-sm:1.25rem;
+--text-body-lg:1.125rem;
+--text-body:1rem;
+--text-body-sm:0.875rem;
+--text-caption:0.75rem;
+--lh-tight:1.1; /* @kind other */
+--lh-snug:1.35; /* @kind other */
+--lh-normal:1.6; /* @kind other */
+--weight-light:300;
+--weight-regular:400;
+--weight-medium:500;
+}
+.font-display{font-family:var(--font-display);font-weight:var(--weight-regular);letter-spacing:var(--tracking-wide);}
+.font-body{font-family:var(--font-body);font-weight:var(--weight-light);}

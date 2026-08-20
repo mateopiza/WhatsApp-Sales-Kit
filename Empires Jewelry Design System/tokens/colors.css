@@ -1,0 +1,29 @@
+:root{
+--color-cream:#F5EDE6;
+--color-taupe:#8A8176;
+--color-stone:#CFC7BE;
+--color-gold:#D4B48C;
+--color-ink:#3A332D;
+--color-white:#FFFFFF;
+--color-taupe-light:oklch(from var(--color-taupe) calc(l + 0.14) c h);
+--color-taupe-dark:oklch(from var(--color-taupe) calc(l - 0.14) c h);
+--color-gold-light:oklch(from var(--color-gold) calc(l + 0.10) c h);
+--color-gold-dark:oklch(from var(--color-gold) calc(l - 0.12) c h);
+--color-ink-light:oklch(from var(--color-ink) calc(l + 0.10) c h);
+--bg-page:var(--color-cream);
+--bg-surface:var(--color-white);
+--bg-surface-muted:oklch(from var(--color-cream) calc(l - 0.02) c h);
+--bg-inverse:var(--color-ink);
+--bg-accent:var(--color-gold);
+--fg-primary:var(--color-ink);
+--fg-secondary:var(--color-taupe);
+--fg-muted:oklch(from var(--color-taupe) l calc(c*0.7) h / 0.75);
+--fg-on-inverse:var(--color-cream);
+--fg-on-accent:var(--color-ink);
+--border-subtle:oklch(from var(--color-taupe) l c h / 0.28);
+--border-strong:var(--color-taupe);
+--accent:var(--color-gold);
+--accent-hover:var(--color-gold-dark);
+--success:#6E7F5C;
+--error:#9C5342;
+}
