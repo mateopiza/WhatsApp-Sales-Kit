@@ -14,8 +14,8 @@ Este sistema te permite lanzar tu propia tienda de joyería profesional en líne
 
 ```bash
 # Clona el proyecto
-git clone https://github.com/tu-usuario/empires-jewelry-app.git
-cd empires-jewelry-app/mcp-server
+git clone https://github.com/mateopiza/WhatsApp-Sales-Kit.git
+cd WhatsApp-Sales-Kit/whatsapp-emprendedor-tool/mcp-server
 
 # Instala dependencias y compila
 npm install
@@ -31,7 +31,7 @@ Edita `~/Library/Application Support/Claude/claude_desktop_config.json` (Mac) o 
   "mcpServers": {
     "empires-jewelry": {
       "command": "node",
-      "args": ["/RUTA_ABSOLUTA/empires-jewelry-app/mcp-server/dist/index.js"],
+      "args": ["/RUTA_ABSOLUTA/WhatsApp-Sales-Kit/whatsapp-emprendedor-tool/mcp-server/dist/index.js"],
       "env": {
         "MCP_TRANSPORT": "stdio"
       }
@@ -48,7 +48,7 @@ Agrega al `mcp` de tu configuración:
 ```json
 {
   "name": "empires-jewelry",
-  "command": "node /RUTA/empires-jewelry-app/mcp-server/dist/index.js",
+  "command": "node /RUTA/WhatsApp-Sales-Kit/whatsapp-emprendedor-tool/mcp-server/dist/index.js",
   "env": { "MCP_TRANSPORT": "stdio" }
 }
 ```

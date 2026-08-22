@@ -59,7 +59,7 @@ export function generateDokployComposeConfig(req: DokployDeployRequest): { compo
   const slug = req.slug || slugify(req.storeName);
   const domain = `${slug}.${req.rootDomain || ROOT_DOMAIN}`;
   const serviceName = `store-${slug}`;
-  const contextPath = req.niche === 'clothing' ? './empires-clothing-app' : './empires-jewelry-app';
+  const contextPath = req.niche === 'clothing' ? './templates/clothing' : './templates/jewelry';
 
   const composeContent = `
 version: "3.9"

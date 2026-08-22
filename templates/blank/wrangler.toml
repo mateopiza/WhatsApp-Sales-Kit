@@ -1,0 +1,22 @@
+name = "my-store"
+compatibility_date = "2024-05-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+[vars]
+ADMIN_PIN = "demo2026"
+ADMIN_PASSWORD = "demo2026"
+AUTH_SECRET = "demo-secret-key-2026"
+ENVIRONMENT = "production"
+
+# Cloudflare D1 SQL Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "my-store-db"
+database_id = "local-d1-store-db"
+
+# Cloudflare KV Distributed Cache Binding
+[[kv_namespaces]]
+binding = "CATALOG_KV"
+id = "local-kv-store-catalog"
+preview_id = "local-kv-store-catalog-preview"
