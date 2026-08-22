@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Trash2, Heart, Send, Layers, ArrowRight } from 'lucide-react';
 import { UrbanGarment } from '../../types/catalog';
+import { storeConfig } from '../../config/storeConfig';
 
 interface FavoritesDrawerProps {
   isOpen: boolean;
@@ -31,8 +32,8 @@ export const FavoritesDrawer: React.FC<FavoritesDrawerProps> = ({
       .map((item, idx) => `${idx + 1}. *${item.name}* (Ref: ${item.reference}) — $${item.price} USD`)
       .join('\n');
 
-    const text = `Hola Empires Urban, deseo cotizar y ordenar las prendas guardadas en mi selección privada:\n\n${itemsList}\n\n💰 *Total Estimado*: *$${totalPrice} USD* (${favorites.length} prendas)\n\n¿Me confirman disponibilidad y guía de despacho?`;
-    window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Hola ${storeConfig.name}, deseo cotizar y ordenar las prendas guardadas en mi selección privada:\n\n${itemsList}\n\n💰 *Total Estimado*: *$${totalPrice} USD* (${favorites.length} prendas)\n\n¿Me confirman disponibilidad y guía de despacho?`;
+    window.open(`https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GARMENTS as INITIAL_GARMENTS, URBAN_CATEGORIES } from './data/products';
 import { UrbanGarment, UrbanSize } from './types/catalog';
+import { storeConfig } from './config/storeConfig';
 import { EditorialHero } from './components/home/EditorialHero';
 import { ProductViewerModal } from './components/product/ProductViewerModal';
 import { FitGuideModal } from './components/product/FitGuideModal';
@@ -47,14 +48,14 @@ export const App: React.FC = () => {
   };
 
   const handleOpenWhatsAppVIP = () => {
-    const text = 'Hola Empires Urban, deseo comunicarme con un Asesor VIP de Moda Urbana.';
-    window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Hola ${storeConfig.name}, deseo comunicarme con un Asesor VIP de Moda Urbana.`;
+    window.open(`https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleWhatsAppConsultation = (garment: UrbanGarment, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    const text = `Hola Empires Urban, deseo consultar la disponibilidad del siguiente drop:\n\n*${garment.name}*\nRef: ${garment.reference}\nTalla: ${selectedSize}\nDensidad: ${garment.gsm || garment.fit_type}\nPrecio: $${garment.price} USD\n\n¿Realizan envíos a mi ciudad?`;
-    window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Hola ${storeConfig.name}, deseo consultar la disponibilidad del siguiente drop:\n\n*${garment.name}*\nRef: ${garment.reference}\nTalla: ${selectedSize}\nDensidad: ${garment.gsm || garment.fit_type}\nPrecio: $${garment.price} USD\n\n¿Realizan envíos a mi ciudad?`;
+    window.open(`https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (

@@ -1,7 +1,13 @@
 version: "3.9"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Empires Jewelry — Docker Compose para Dokploy & GitHub CI/CD
+# WhatsApp Sales Kit — Docker Compose para Dokploy & GitHub CI/CD
+#
+# Este compose construye UN template como tienda de demostración/producción.
+# Por defecto usa templates/jewelry (el más completo: CMS + API + PWA).
+# Selecciona otro con STORE_TEMPLATE en tu .env, por ejemplo:
+#   STORE_TEMPLATE=blank   -> tu propia tienda copiada a templates/blank
+# (templates/clothing es una demo frontend-only y no incluye Dockerfile.)
 #
 # Soporta:
 # 1. Despliegue automatizado en Dokploy (PaaS) conectado a repositorio de GitHub.
@@ -11,25 +17,25 @@ version: "3.9"
 # ─────────────────────────────────────────────────────────────────────────────
 
 services:
-  empires-jewelry-store:
+  store:
     build:
-      context: ./empires-jewelry-app
+      context: ./templates/${STORE_TEMPLATE:-jewelry}
       dockerfile: docker/Dockerfile
-    image: empires-jewelry-app:latest
-    container_name: ${COMPOSE_PROJECT_NAME:-empires}-store
+    image: whatsapp-sales-kit-store:latest
+    container_name: ${COMPOSE_PROJECT_NAME:-store}-store
     restart: unless-stopped
     ports:
       # Puerto expuesto en VPS / Local (Dokploy enruta automáticamente vía Traefik)
       - "${STORE_PORT:-3000}:80"
     environment:
-      STORE_NAME: ${STORE_NAME:-Empires Jewelry}
+      STORE_NAME: ${STORE_NAME:-My Store}
       STORE_CURRENCY: ${STORE_CURRENCY:-USD}
       STORE_WHATSAPP_PHONE: ${STORE_WHATSAPP_PHONE:-573001234567}
-      STORE_PRIMARY_COLOR: ${STORE_PRIMARY_COLOR:-#D4B48C}
-      STORE_ACCENT_COLOR: ${STORE_ACCENT_COLOR:-#3A332D}
+      STORE_PRIMARY_COLOR: ${STORE_PRIMARY_COLOR:-#111111}
+      STORE_ACCENT_COLOR: ${STORE_ACCENT_COLOR:-#4F46E5}
       STORE_ADMIN_PIN: ${STORE_ADMIN_PIN:-1879}
       STORE_LOGO_URL: ${STORE_LOGO_URL:-}
-      STORE_TAGLINE: ${STORE_TAGLINE:-Joyería de Alta Distinción}
+      STORE_TAGLINE: ${STORE_TAGLINE:-Powered by WhatsApp Sales Kit}
       NODE_ENV: production
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
@@ -39,21 +45,21 @@ services:
       start_period: 10s
     volumes:
       # Persistencia de catálogo offline / JSON / SQLite
-      - empires_store_data:/app/data
+      - store_data:/app/data
     networks:
-      - empires-net
+      - store-net
     labels:
       # ─── Dokploy & Traefik Reverse Proxy Configuration ───
       - "traefik.enable=true"
-      - "traefik.http.routers.empires-store.rule=Host(`${DOMAIN:-empires.local}`)"
-      - "traefik.http.routers.empires-store.entrypoints=websecure"
-      - "traefik.http.routers.empires-store.tls.certresolver=letsencrypt"
-      - "traefik.http.services.empires-store.loadbalancer.server.port=80"
+      - "traefik.http.routers.store.rule=Host(`${DOMAIN:-store.local}`)"
+      - "traefik.http.routers.store.entrypoints=websecure"
+      - "traefik.http.routers.store.tls.certresolver=letsencrypt"
+      - "traefik.http.services.store.loadbalancer.server.port=80"
 
 networks:
-  empires-net:
+  store-net:
     driver: bridge
 
 volumes:
-  empires_store_data:
+  store_data:
     driver: local

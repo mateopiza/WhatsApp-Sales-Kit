@@ -139,7 +139,7 @@ export const GARMENTS: UrbanGarment[] = [
     short_description: 'Bolso pechera utilitario en tejido Cordura 1000D ultrarresistente con mosquetones anodizados en oro.',
     description: 'Accesorio imprescindible para el outfit urbano contemporáneo. Compartimento impermeable acolchado para tablet/smartphone y correas pectorales.',
     material: 'Tejido Cordura 1000D Milspec',
-    fit_type: 'Oversized Free Size',
+    fit_type: 'Unisex Relaxed',
     outfit_slot: 'accessory',
     available_sizes: ['Oversized Free Size'],
     colors: ['Stealth Black', 'Cyber Yellow'],

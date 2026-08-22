@@ -1,7 +1,8 @@
 import { Product, WhatsAppInquiryParams } from '../types/catalog';
 import { formatPrice } from './formatters';
+import { storeConfig } from '../config/storeConfig';
 
-export const DEFAULT_WHATSAPP_PHONE = '573001234567';
+export const DEFAULT_WHATSAPP_PHONE = storeConfig.whatsapp;
 
 /**
  * Generates an inquiry WhatsApp link for a single jewelry item.

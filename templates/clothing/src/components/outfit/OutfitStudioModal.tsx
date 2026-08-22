@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Sparkles, Send, RefreshCw, ShoppingBag, Layers, Plus, Check } from 'lucide-react';
 import { GARMENTS } from '../../data/products';
 import { UrbanGarment, OutfitSlot } from '../../types/catalog';
+import { storeConfig } from '../../config/storeConfig';
 
 interface OutfitStudioModalProps {
   isOpen: boolean;
@@ -24,8 +25,8 @@ export const OutfitStudioModal: React.FC<OutfitStudioModalProps> = ({ isOpen, on
   const finalTotal = rawTotal - comboDiscount;
 
   const handleSendOutfitWhatsApp = () => {
-    const text = `Hola Empires Urban, quiero cotizar y pedir el siguiente OUTFIT COMPLETO COMBINADO:\n\n👕 *Superior*: ${selectedTop.name} (Ref: ${selectedTop.reference}) — $${selectedTop.price} USD\n👖 *Inferior*: ${selectedBottom.name} (Ref: ${selectedBottom.reference}) — $${selectedBottom.price} USD\n👟 *Calzado/Acc*: ${selectedFootwear.name} (Ref: ${selectedFootwear.reference}) — $${selectedFootwear.price} USD\n\n🎁 *Descuento Combo Outfit 10%*: -$${comboDiscount} USD\n💰 *TOTAL BUNDLE*: *$${finalTotal} USD*\n\n¿Tienen disponibilidad en mi talla?`;
-    window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Hola ${storeConfig.name}, quiero cotizar y pedir el siguiente OUTFIT COMPLETO COMBINADO:\n\n👕 *Superior*: ${selectedTop.name} (Ref: ${selectedTop.reference}) — $${selectedTop.price} USD\n👖 *Inferior*: ${selectedBottom.name} (Ref: ${selectedBottom.reference}) — $${selectedBottom.price} USD\n👟 *Calzado/Acc*: ${selectedFootwear.name} (Ref: ${selectedFootwear.reference}) — $${selectedFootwear.price} USD\n\n🎁 *Descuento Combo Outfit 10%*: -$${comboDiscount} USD\n💰 *TOTAL BUNDLE*: *$${finalTotal} USD*\n\n¿Tienen disponibilidad en mi talla?`;
+    window.open(`https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleRandomizeOutfit = () => {

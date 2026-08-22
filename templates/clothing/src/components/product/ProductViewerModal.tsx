@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Send, Layers, ShieldCheck, Heart, Sparkles, Check, Info } from 'lucide-react';
 import { UrbanGarment, UrbanSize } from '../../types/catalog';
+import { storeConfig } from '../../config/storeConfig';
 
 interface ProductViewerModalProps {
   garment: UrbanGarment | null;
@@ -60,8 +61,8 @@ export const ProductViewerModal: React.FC<ProductViewerModalProps> = ({
   const images = garment.images.length > 0 ? garment.images : [garment.cover_image];
 
   const handleWhatsAppConsultation = () => {
-    const text = `Hola Empires Urban, deseo ordenar/consultar la prenda:\n\n*${garment.name}*\nRef: ${garment.reference}\nTalla: ${selectedSize}\nColor: ${selectedColor || garment.colors[0]}\nDensidad: ${garment.gsm || garment.fit_type}\nPrecio: $${garment.price} USD\n\n¿Me confirman disponibilidad inmediata?`;
-    window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Hola ${storeConfig.name}, deseo ordenar/consultar la prenda:\n\n*${garment.name}*\nRef: ${garment.reference}\nTalla: ${selectedSize}\nColor: ${selectedColor || garment.colors[0]}\nDensidad: ${garment.gsm || garment.fit_type}\nPrecio: $${garment.price} USD\n\n¿Me confirman disponibilidad inmediata?`;
+    window.open(`https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
