@@ -35,17 +35,25 @@ Google Antigravity es una plataforma agéntica de pair-programming diseñada par
 Cuando abras el proyecto en el explorador de Antigravity, encontrarás los siguientes módulos clave:
 
 ```
-├── empires-jewelry-app/            # Aplicación Frontend React 18 + Vite + Tailwind + TypeScript
-│   ├── src/
-│   │   ├── components/             # Componentes de UI (Header, Hero, ProductViewer, Cart, WhatsApp CTA)
-│   │   ├── context/                # Estados de la app (Monedas USD/COP/EUR, Favoritos, Carrito, Admin)
-│   │   ├── data/products.ts        # 📦 CATÁLOGO DE PRODUCTOS (Edítalo aquí)
-│   │   ├── utils/whatsapp.ts       # 💬 GENERADOR DE MENSAJES Y ENLACES DE WHATSAPP
-│   │   └── types/catalog.ts        # Definición de tipos TypeScript para productos
-│   ├── tests/                      # Suite de 163+ pruebas automatizadas (Vitest)
-│   └── docker/                     # Dockerfile y Nginx para producción
+├── templates/
+│   ├── jewelry/                    # Demo: joyería (React 18 + Vite + Tailwind + TypeScript)
+│   │   ├── src/
+│   │   │   ├── components/         # Componentes de UI (Header, Hero, ProductViewer, Cart, WhatsApp CTA)
+│   │   │   ├── context/            # Estados de la app (Monedas USD/COP/EUR, Favoritos, Carrito, Admin)
+│   │   │   ├── config/storeConfig.ts # 🏪 CONFIGURACIÓN DEL NEGOCIO (nombre, WhatsApp, colores)
+│   │   │   ├── data/products.ts    # 📦 CATÁLOGO DE PRODUCTOS (Edítalo aquí)
+│   │   │   ├── utils/whatsapp.ts   # 💬 GENERADOR DE MENSAJES Y ENLACES DE WHATSAPP
+│   │   │   └── types/catalog.ts    # Definición de tipos TypeScript para productos
+│   │   ├── tests/                  # Suite de 163+ pruebas automatizadas (Vitest)
+│   │   └── docker/                 # Dockerfile y Nginx para producción
+│   ├── clothing/                   # Demo: moda y prendas
+│   └── blank/                      # Base limpia para tu propia tienda
 ├── whatsapp-emprendedor-tool/      # Servidor MCP y herramientas de ayuda conversacional
-├── DOKPLOY_DEPLOYMENT.md           # Guía de despliegue en VPS Dokploy
+├── docs/
+│   ├── DOKPLOY_DEPLOYMENT.md       # Guía de despliegue en VPS Dokploy
+│   ├── DOCKER_GUIDE.md             # Arquitectura Docker & Nginx
+│   ├── PROJECT.md                  # Blueprint técnico y arquitectura
+│   └── RESPONSIVE_DESIGN.md        # Especificación del sistema responsive
 ├── MANIFESTO_COLOMBIA.md           # Manifiesto solidario para emprendedores
 └── LICENSE                         # Licencia Open Source MIT
 ```
@@ -58,7 +66,7 @@ Cuando abras el proyecto en el explorador de Antigravity, encontrarás los sigui
 Puedes pedirle al agente de Antigravity que instale las dependencias o ejecutarlo tú mismo en la pestaña de Terminal:
 
 ```bash
-cd empires-jewelry-app
+cd templates/jewelry   # o templates/clothing, templates/blank
 npm install
 ```
 
@@ -90,12 +98,12 @@ En Antigravity, no necesitas escribir código manualmente. Solo pídeselo al age
 Si deseas comprender o guiar las modificaciones manuales, estos son los archivos clave:
 
 ### 1. Configurar Datos de Contacto y Moneda
-Archivo: [`src/utils/whatsapp.ts`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/src/utils/whatsapp.ts) y [`src/context/AppContext.tsx`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/src/context/AppContext.tsx)
+Archivo: [`src/utils/whatsapp.ts`](../templates/jewelry/src/utils/whatsapp.ts) y [`src/context/AppContext.tsx`](../templates/jewelry/src/context/AppContext.tsx)
 - Define el número internacional (ej: `573001234567` para Colombia).
 - Modifica el mensaje de bienvenida y plantilla de cotización.
 
 ### 2. Modificar el Catálogo de Productos
-Archivo: [`src/data/products.ts`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/src/data/products.ts)
+Archivo: [`src/data/products.ts`](../templates/jewelry/src/data/products.ts)
 Cada producto tiene la siguiente estructura:
 ```typescript
 {
@@ -117,12 +125,12 @@ Cada producto tiene la siguiente estructura:
 ```
 
 ### 3. Personalizar Colores y Tipografía
-- **Colores**: Edita [`tailwind.config.js`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/tailwind.config.js).
-- **Tipografías**: Cambia las fuentes en [`src/index.css`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/src/index.css) y [`index.html`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/index.html).
+- **Colores**: Edita [`tailwind.config.js`](../templates/jewelry/tailwind.config.js).
+- **Tipografías**: Cambia las fuentes en [`src/index.css`](../templates/jewelry/src/index.css) y [`index.html`](../templates/jewelry/index.html).
 
 ### 4. PIN y Seguridad del Panel Administrativo (CMS)
 - La aplicación incluye un panel de administración accesible en `/admin` o con el atajo `Ctrl + Shift + A`.
-- Para cambiar el PIN predeterminado, edita la variable `STORE_ADMIN_PIN` en `.env` o en [`src/context/AdminContext.tsx`](file:///mnt/nvme/004%20-%20B2B/MIguel/empires-jewelry-app/src/context/AdminContext.tsx).
+- Para cambiar el PIN predeterminado, edita la variable `STORE_ADMIN_PIN` en `.env` o en [`src/context/AdminContext.tsx`](../templates/jewelry/src/context/AdminContext.tsx).
 
 ---
 
@@ -142,7 +150,7 @@ Aprovecha los comandos especiales de Antigravity para automatizar tu trabajo:
 
 ## 🔌 Conexión y Uso del Servidor MCP Integrado
 
-El repositorio incluye un servidor **MCP (Model Context Protocol)** en [`whatsapp-emprendedor-tool/mcp-server`](file:///mnt/nvme/004%20-%20B2B/MIguel/whatsapp-emprendedor-tool/mcp-server).
+El repositorio incluye un servidor **MCP (Model Context Protocol)** en [`whatsapp-emprendedor-tool/mcp-server`](../whatsapp-emprendedor-tool/mcp-server).
 
 ### Cómo Conectarlo en Antigravity:
 1. Compila el servidor:
@@ -179,7 +187,7 @@ El proyecto cuenta con una suite rigurosa de **163+ pruebas automatizadas** que 
 
 Para ejecutar las pruebas en Antigravity:
 ```bash
-cd empires-jewelry-app
+cd templates/jewelry
 npm test
 ```
 
@@ -193,11 +201,11 @@ Una vez que personalices tu catálogo, tienes 3 formas sencillas de publicarlo:
 - Sube tus cambios a GitHub.
 - Conecta el repositorio en tu panel Dokploy como aplicación Compose.
 - Dokploy construirá la imagen Docker automáticamente y configurará HTTPS con Let's Encrypt.
-- *Consulta los detalles en [DOKPLOY_DEPLOYMENT.md](file:///mnt/nvme/004%20-%20B2B/MIguel/DOKPLOY_DEPLOYMENT.md).*
+- *Consulta los detalles en [DOKPLOY_DEPLOYMENT.md](./DOKPLOY_DEPLOYMENT.md).*
 
 ### 2. Cloudflare Pages (100% Gratuito)
 ```bash
-cd empires-jewelry-app
+cd templates/jewelry
 npm run build
 npm run deploy
 ```

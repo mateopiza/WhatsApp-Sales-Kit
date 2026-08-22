@@ -81,11 +81,11 @@ Si prefieres desplegar únicamente como una **Application** en lugar de Compose:
 3. En **Build Type**, selecciona **Dockerfile**.
 4. En **Dockerfile Path**, ingresa:
    ```
-   ./empires-jewelry-app/docker/Dockerfile
+   ./templates/jewelry/docker/Dockerfile
    ```
 5. En **Context Path**, ingresa:
    ```
-   ./empires-jewelry-app
+   ./templates/jewelry
    ```
 6. En **Ports**, mapea el puerto del contenedor `80`.
 7. Define las variables de entorno y haz clic en **Deploy**.

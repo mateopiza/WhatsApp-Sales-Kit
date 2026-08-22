@@ -42,10 +42,10 @@ services:
     networks:
       - store_net
 
-  # ─── MCP Orchestrator Server ───────────────────────────────
+  # ─── MCP Orchestrator Server (whatsapp-emprendedor-tool) ───
   mcp-server:
     build:
-      context: ../mcp-server
+      context: ../../../whatsapp-emprendedor-tool/mcp-server
       dockerfile: Dockerfile
     image: empires-mcp-server:latest
     container_name: ${COMPOSE_PROJECT_NAME:-empires}-mcp

@@ -107,18 +107,18 @@ location = /health {
 
 ### 1. Construir la imagen localmente
 ```bash
-docker build -f empires-jewelry-app/docker/Dockerfile -t empires-jewelry-app:local ./empires-jewelry-app
+docker build -f templates/jewelry/docker/Dockerfile -t jewelry-demo:local ./templates/jewelry
 ```
 
 ### 2. Ejecutar un contenedor de prueba
 ```bash
 docker run -d \
-  --name test-empires \
+  --name test-jewelry-demo \
   -p 8080:80 \
   -e STORE_NAME="Empires Joyería Fina" \
   -e STORE_CURRENCY="COP" \
   -e STORE_WHATSAPP_PHONE="573109876543" \
-  empires-jewelry-app:local
+  jewelry-demo:local
 ```
 
 ### 3. Verificar estado y funcionamiento
@@ -130,5 +130,5 @@ curl -i http://localhost:8080/health
 curl http://localhost:8080/runtime-config.js
 
 # Detener y eliminar contenedor de prueba
-docker stop test-empires && docker rm test-empires
+docker stop test-jewelry-demo && docker rm test-jewelry-demo
 ```

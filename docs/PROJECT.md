@@ -1,4 +1,10 @@
-# Project: WhatsApp Sales Kit & Empires E-Commerce (Open Source & Solidarity Edition)
+# Project: WhatsApp Sales Kit (Open Source & Solidarity Edition)
+
+> This blueprint documents the architecture of `templates/jewelry`, the kit's
+> most feature-complete demo (CMS, PWA, Cloudflare Workers API). The same
+> architecture powers `templates/blank`, the recommended starting point for a
+> new store — see the root [README.md](../README.md) for the template
+> comparison.
 
 ## Overview & Humanitarian Mission
 This project is an Open Source (MIT) mobile-first luxury e-commerce application and WhatsApp direct-sales toolkit, created to support Colombian and Latin American micro-entrepreneurs, jewelers, and artisans affected by seismic disasters with a 100% free, zero-SaaS-cost digital catalog.
@@ -22,7 +28,7 @@ This project is an Open Source (MIT) mobile-first luxury e-commerce application 
 
 ## Code Layout
 ```
-/mnt/nvme/004 - B2B/MIguel/empires-jewelry-app/
+templates/jewelry/
 ├── index.html
 ├── package.json
 ├── tsconfig.json

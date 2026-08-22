@@ -220,7 +220,7 @@ Reverse Proxy (Caddy/Traefik) → enruta por subdominio con SSL automático
 ## Estructura de Archivos Generados
 
 ```
-empires-jewelry-app/
+templates/jewelry/  (o templates/clothing/, según el niche)
 ├── docker/
 │   ├── Dockerfile              # Multi-stage build React + Nginx
 │   ├── docker-compose.yml      # Single-store deployment

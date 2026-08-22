@@ -1,6 +1,6 @@
 # Especificación del Sistema de Diseño Responsive — Empires Jewelry
 
-Este documento define la arquitectura y directrices de diseño responsive y experiencia táctil para la plataforma **Empires Jewelry**, abarcando desde dispositivos móviles ultracompactos hasta pantallas de escritorio 4K.
+Este documento define la arquitectura y directrices de diseño responsive y experiencia táctil, usando la demo **Empires Jewelry** (`templates/jewelry`) como referencia. La misma configuración responsive (breakpoints, gestos táctiles) se hereda en `templates/blank` y `templates/clothing`, abarcando desde dispositivos móviles ultracompactos hasta pantallas de escritorio 4K.
 
 ---
 

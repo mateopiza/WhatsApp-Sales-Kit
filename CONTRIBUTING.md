@@ -26,9 +26,10 @@ Si encuentras un error o tienes una idea para mejorar la plataforma:
    git checkout -b fix/correccion-error
    ```
 3. Realiza tus modificaciones respetando los estándares de código.
-4. Ejecuta la suite de pruebas automatizadas:
+4. Ejecuta la suite de pruebas automatizadas del template que modificaste:
    ```bash
-   cd empires-jewelry-app
+   cd templates/jewelry   # o templates/clothing, templates/blank
+   npm install
    npm test
    ```
 5. Haz commit de tus cambios siguiendo la convención de *Conventional Commits*:
@@ -36,6 +37,17 @@ Si encuentras un error o tienes una idea para mejorar la plataforma:
    git commit -m "feat(catalog): agregar soporte para selección de variantes personalizadas"
    ```
 6. Haz push a tu fork y abre un **Pull Request** hacia la rama `main`.
+
+### 3. Agregar un nuevo template (vertical de negocio)
+
+¿Quieres contribuir una plantilla para otro rubro (café, calzado, artesanías)?
+1. Copia `templates/blank` como punto de partida (no dupliques `jewelry` ni
+   `clothing`, que están pensados como demos, no como base genérica).
+2. Personaliza `src/config/storeConfig.ts`, `src/data/products.ts` y el
+   branding.
+3. Agrega un `README.md` propio siguiendo el formato de
+   `templates/jewelry/README.md`.
+4. Abre el PR explicando qué hace distinto a tu template de los existentes.
 
 ---
 
