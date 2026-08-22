@@ -1,0 +1,59 @@
+{
+  "name": "My Store — Catálogo Digital por WhatsApp",
+  "short_name": "My Store",
+  "description": "Catálogo digital interactivo con navegación gestual, favoritos y consulta personalizada vía WhatsApp.",
+  "start_url": "/",
+  "id": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FAFAF9",
+  "background_color": "#FAFAF9",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "categories": ["shopping", "business"],
+  "icons": [
+    {
+      "src": "/assets/logos/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logos/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logos/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Colecciones",
+      "short_name": "Colecciones",
+      "description": "Explorar el catálogo",
+      "url": "/#colecciones",
+      "icons": [{ "src": "/assets/logos/logo.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Buscar Productos",
+      "short_name": "Buscar",
+      "description": "Búsqueda instantánea con filtros",
+      "url": "/#buscar",
+      "icons": [{ "src": "/assets/logos/logo.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Productos Guardados",
+      "short_name": "Favoritos",
+      "description": "Ver lista de productos favoritos",
+      "url": "/#favoritos",
+      "icons": [{ "src": "/assets/logos/logo.svg", "sizes": "96x96" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

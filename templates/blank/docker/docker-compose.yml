@@ -1,0 +1,50 @@
+version: "3.9"
+
+# ─────────────────────────────────────────────────────────────
+# My Store — Single Store Docker Compose
+#
+# Usage (from this template's root directory):
+#   docker compose -f docker/docker-compose.yml up -d --build
+#
+# Override any value with an .env file or -e flags:
+#   STORE_NAME="Perla Negra" STORE_WHATSAPP_PHONE=573001234567 docker compose -f docker/docker-compose.yml up -d --build
+# ─────────────────────────────────────────────────────────────
+
+services:
+  store:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: my-store:latest
+    container_name: ${COMPOSE_PROJECT_NAME:-store}-store
+    restart: unless-stopped
+    ports:
+      - "${STORE_PORT:-3000}:80"
+    environment:
+      STORE_NAME: ${STORE_NAME:-My Store}
+      STORE_CURRENCY: ${STORE_CURRENCY:-USD}
+      STORE_WHATSAPP_PHONE: ${STORE_WHATSAPP_PHONE:-573001234567}
+      STORE_PRIMARY_COLOR: ${STORE_PRIMARY_COLOR:-#111111}
+      STORE_ACCENT_COLOR: ${STORE_ACCENT_COLOR:-#818CF8}
+      STORE_ADMIN_PIN: ${STORE_ADMIN_PIN:-1879}
+      STORE_LOGO_URL: ${STORE_LOGO_URL:-}
+      STORE_TAGLINE: ${STORE_TAGLINE:-Powered by WhatsApp Sales Kit}
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      # Persist product data (SQLite / JSON fallback)
+      - store_data:/app/data
+    networks:
+      - store_net
+
+networks:
+  store_net:
+    driver: bridge
+
+volumes:
+  store_data:
+    driver: local

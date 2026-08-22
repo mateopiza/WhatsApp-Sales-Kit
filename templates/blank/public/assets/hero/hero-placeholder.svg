@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="My Store">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1c1e"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <path d="M470 700 L600 480 L730 700" fill="none" stroke="#818CF8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="600" cy="770" r="12" fill="#818CF8"/>
+  </g>
+  <text x="600" y="920" text-anchor="middle" font-family="sans-serif" font-size="40" letter-spacing="6" fill="#FAFAF9" opacity="0.85">MY STORE</text>
+</svg>
